@@ -190,8 +190,7 @@ public class CodePanel extends JPanel {
 			while (token.getEndOffset() < offset) {
 				token = token.getNextToken();
 				if (token == null) {
-					index = 0;
-					break;
+					return -1;
 				}
 				index++;
 			}
@@ -201,7 +200,7 @@ public class CodePanel extends JPanel {
 	}
 
 	private int getOffsetOfTokenByIndex(int index, Token token) {
-		if (token != null) {
+		if (token != null && index != -1) {
 			for (int i = 0; i < index; i++) {
 				token = token.getNextToken();
 				if (token == null) {
